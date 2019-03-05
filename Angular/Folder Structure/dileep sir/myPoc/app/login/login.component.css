@@ -1,0 +1,282 @@
+.logo img {
+    width: 235px;
+}
+
+.logo a {
+    /* cursor: default !important; */
+}
+
+
+/* start: login page; */
+
+.bg-img-lock {
+    background-image: url('/assets/images/anchor.png');
+    background-size: cover;
+}
+
+#main-login {
+    /* margin-top: 50px; */
+    position: relative;
+    height: calc(85vh);
+}
+
+#main-login .login_wrapper {
+    position: absolute;
+    flex-direction: column;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+#signin {
+    background-color: #02b0ed;
+    border-radius: 300px 0px 0px 300px;
+    height: 550px;
+    padding-top: 100px;
+}
+
+.tec_mang {
+    font-size: 14px;
+    color: #9ea8aa;
+    text-align: center;
+    line-height: 15px;
+}
+
+#main-login .inputaddon img {
+    width: 25px;
+}
+
+#main-login .inputform {
+    background-color: transparent;
+    box-shadow: unset;
+    border-bottom: 1px solid #83daf8;
+    border-top: unset;
+    border-left: unset;
+    border-right: unset;
+    width: 85%;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.bg-img-lock {
+    background-image: url('/assets/images/anchor.png');
+    background-size: 100% 100%;
+    height: 400px;
+    width: 215px;
+    float: right;
+    background-position: center;
+}
+
+.input-icon .input-group-addon img {
+    width: 15px;
+    height: 20px;
+}
+
+.login_text_wrap {
+    width: 75%;
+    float: right;
+    margin-top: 12em;
+}
+
+.btn_signin.disabled,
+input[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.login_header_wrapper {
+    margin-top: 20px;
+}
+
+.login_content h1 {
+    font-size: 30px;
+}
+
+.new-acc {
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label:focus,
+.mat-form-field-appearance-legacy .mat-form-field-label:hover,
+.mat-form-field-appearance-legacy .mat-form-field-label:active,
+.mat-form-field-appearance-legacy .mat-form-field-label:visited {
+    color: #3c474b!important;
+}
+
+.btn_overview {
+    background-color: #02b0ed;
+    padding: 5px 45px;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 30px;
+    border: unset;
+    font-weight: 500;
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10);
+}
+
+#main-login .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #99a4a6;
+    width: 88%;
+    margin-left: 30px;
+}
+
+#main-login .input-form .mat-input-element {
+    color: #3c474b !important;
+    padding: 0px 30px;
+}
+
+#main-login .mat-form-field-label-wrapper {
+    left: 30px !important;
+}
+
+.logintext_wrap {
+    padding: 0px 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-signin {
+    background-color: #fff;
+    margin-top: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10);
+    width: 400px;
+    border-radius: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.login-heading {
+    color: #3c474b;
+    font-size: 28px;
+    text-align: center;
+    margin: 30px 0px;
+}
+
+#main-login .inputform:focus {
+    outline: none;
+}
+
+.inputlabel {
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.btn-sign,
+.backToSignin {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#main-login span.inputaddon {
+    line-height: 3;
+}
+
+.btn_signin:focus {
+    outline: none;
+}
+
+.password_input {
+    padding-right: 100px;
+}
+
+.loginbutton {
+    margin: 20px 0px;
+}
+
+.lost-pass {
+    font-size: 13px;
+    position: absolute;
+    right: 10px;
+}
+
+.lost-pass a {
+    color: #3c474b;
+}
+
+.new-acc a {
+    color: #3c474b;
+}
+
+.check_status {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #02b0ed !important;
+}
+
+.ckbox-wrap {
+    margin: 30px 0px;
+    position: relative;
+}
+
+.ckbox-wrap .loader {
+    position: absolute;
+    left: 136px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+/* End: login page; */
+
+
+/*Start:Lost password*/
+
+.input-icon .input-email-addon img {
+    width: 20px;
+    height: 15px;
+}
+
+.passinpt {
+    padding-right: 8em !important;
+}
+
+.lost-pass-head {
+    padding: 0px 35px 15px;
+}
+
+.reset-passwrap {
+    padding-bottom: 70px;
+    padding-top: 25px;
+}
+
+.back-icon {
+    cursor: pointer;
+}
+
+.lostpass-text {
+    margin: 45px 0px 10px;
+}
+
+.check-status-wrap .tec_mang,
+.check-status-wrap .check-detail {
+    margin-bottom: 10px;
+}
+
+.check-detail {
+    font-size: 14px;
+    color: #02b0ed;
+    font-weight: 600;
+}
+
+.status-wrapper {
+    margin: 35px 0px 30px;
+}
+
+.login-box {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/*End: Lost Password*/

@@ -1,0 +1,36 @@
+.top-strip{
+    font-size: 24px;
+    padding: 0 20px;
+    color: #585865;
+    font-weight: bold; 
+    padding: 5px;
+}
+.mj-nav .navbar-brand{
+ padding: 0;
+ font-size: 1.23rem;
+ font-weight: bold;
+}
+.mj-nav .navbar{
+    padding: .2rem 1rem;
+    padding-bottom: 0;
+}
+.mj-nav .nav-link{
+    padding: .3rem 1rem;
+}
+.mj-nav .navbar-nav li{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.mj-nav .navbar-nav li a{
+    padding-left: 0px;
+    padding-right:0;
+}
+.mj-nav .navbar-nav li.active a{
+    border-bottom: 3px solid #007bff;
+    font-size: initial;    
+}
+.lms-logo{
+    width: 100px;
+    height: auto;
+    margin-right:20px;
+}

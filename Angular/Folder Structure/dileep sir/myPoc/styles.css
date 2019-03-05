@@ -1,0 +1,607 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('src/app/app.component.css');
+@import url('src/app/login/login.component.css');
+@import url('src/app/pageNotFound/page404.component.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+/*Start: Universal Styling */
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    /* font-family: 'Lato', sans-serif !important; */
+    font-family: 'Roboto', sans-serif !important;
+    font-size: .96rem !important;
+}
+
+a,
+a:hover {
+    transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+p {
+    margin: 0;
+}
+
+html,
+body,
+section,
+div,
+span,
+aside,
+main,
+table,
+td,
+th,
+li,
+p,
+a,
+label,
+input,
+textarea,
+select,
+option {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+a,
+a:hover,
+a:visited,
+a:focus,
+a:active {
+    text-decoration: none;
+}
+
+.p0 {
+    padding: 0px;
+}
+
+.plr15 {
+    padding: 0px 15px !important;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #99a3a6;
+    opacity: 1;
+    /* Firefox */
+    font-size: 13px;
+    font-weight: 600;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #99a3a6;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #99a3a6;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+button.disabled,
+button[disabled] {
+    opacity: .65;
+    cursor: not-allowed !important;
+}
+
+.loader {
+    /* border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #80d7f6;
+    border-bottom: 5px solid #80d7f6; */
+    width: 40px !important;
+    height: 40px !important;
+    margin: 10px auto;
+    /* -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite; */
+}
+
+.loader svg {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #02b0ed;
+}
+
+
+/* @-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} */
+
+
+/*End: Universal Styling */
+
+
+/* Start: Button*/
+
+.btn_primary {
+    cursor: pointer !important;
+    background-color:gray !important;
+    /* background-color: #02b0ed !important; */
+    padding: 0px 35px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border: unset !important;
+    font-weight: 500!important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10) !important;
+}
+
+.btn_green {
+    cursor: pointer !important;
+    background-color: #1fa564 !important;
+    padding: 0px 35px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border: unset !important;
+    font-weight: 500!important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10) !important;
+}
+
+.btn_red {
+    cursor: pointer !important;
+    background-color: #ef2929 !important;
+    padding: 0px 35px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border: unset !important;
+    font-weight: 500!important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10) !important;
+}
+
+.btn_black {
+    cursor: pointer !important;
+    background-color: #3c474b !important;
+    padding: 0px 35px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border: unset !important;
+    font-weight: 500!important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10) !important;
+}
+
+.btn_grey {
+    cursor: pointer !important;
+    background-color: #909597 !important;
+    padding: 0px 25px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border: unset !important;
+    font-weight: 500!important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10) !important;
+}
+
+
+/*End: Button*/
+
+.inputshad_none .form-control:focus {
+    box-shadow: none;
+}
+
+.btn_bluebox {
+    background-color: #02b0ed;
+    padding: 5px 45px;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 30px;
+    border: unset;
+    font-weight: 500;
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10);
+}
+
+.inactive_col {
+    color: #afb6b8;
+}
+
+.form_coloum_disable {
+    opacity: 0.5;
+}
+
+a {
+    color: #02b0ed;
+    cursor: pointer;
+}
+
+.navbar-listing a {
+    color: #3c474b;
+}
+
+.navbar-listing a:hover {
+    color: #02b0ed;
+}
+
+.p0 {
+    padding: 0px !important;
+}
+
+
+/* fixes css */
+
+.border-none {
+    border: none !important;
+}
+
+.input-form .mat-form-field {
+    width: 100%;
+}
+
+
+/* .input-form .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label.mat-accent {
+    color: #f44336;
+    display: none;
+} */
+
+.mat-form-field .mat-placeholder-required.mat-form-field-required-marker {
+    color: #f44336 !important;
+}
+
+.mat-form-field-label {
+    position: relative;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label,
+.mat-select-placeholder,
+.mat-form-field.ng-valid .mat-empty.mat-form-field-label {
+    color: #99a3a6 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #3c474b !important;
+}
+
+.ckbox-wrap .mat-checkbox-inner-container {
+    height: 14px;
+    width: 14px;
+}
+
+.mat-form-field-wrapper {
+    margin-bottom: 10px !important;
+}
+
+.ckbox-wrap .mat-checkbox-layout .mat-checkbox-label {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.mg-lft20 {
+    margin-left: 20px;
+}
+
+.mat-form-field.mat-focused .ico-cancle svg,
+.mat-form-field.mat-focused .ico-cancle svg,
+.mat-form-field.ng-valid .ico-cancle svg {
+    fill: #3c474b;
+}
+
+.mat-button[disabled],
+.btn.disabled {
+    background: #afb6b7 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field.ng-valid .mat-form-field-label {
+    color: #3c474b !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #f44336 !important;
+}
+
+.mat-form-field.mat-form-field-invalid .ico-cancle svg {
+    fill: #f44336 !important;
+}
+
+.mt0 {
+    margin-top: 0px;
+}
+
+.inputbox-icon .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #99a4a6;
+    width: 88%;
+    margin-left: 30px;
+}
+
+.inputbox-icon .mat-form-field-label-wrapper {
+    left: 30px !important;
+}
+
+.inputbox-icon .input-form .mat-input-element {
+    color: #3c474b !important;
+    padding: 0px 30px;
+}
+
+.searchwrapper .mat-form-field-label-wrapper {
+    font-size: 14px;
+    top: -8px;
+}
+
+.admin-dashboard-wrapper .mat-form-field-appearance-legacy .mat-form-field-underline {
+    display: none;
+}
+
+.inputbox-icon .input-form .searchbox.mat-input-element {
+    width: 65%;
+}
+
+#filter-wrapper-sec .mat-form-field-flex {
+    padding: 0px 10px;
+    background-color: #eceff0;
+}
+
+#filter-wrapper-sec .mat-form-field-appearance-legacy .mat-form-field-underline {
+    display: none;
+}
+
+.searchwrapper .mat-form-field-hide-placeholder .mat-select-placeholder {
+    top: -8px;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label,
+.mat-select-placeholder,
+.mat-form-field.ng-valid .mat-empty.mat-form-field-label {
+    color: #99a3a6 !important;
+}
+
+.admin-dashboard-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: .5em 0 !important;
+    border-top: 0px;
+}
+
+.admin-dashboard-wrapper .mat-form-field-wrapper {
+    margin: 0px 10px 10px;
+}
+
+#filter-wrapper-sec .select-item .mat-form-field-infix {
+    width: 210px;
+}
+
+#filter-wrapper-sec .mat-form-field-infix {
+    width: 135px;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #02b0ed !important;
+}
+
+.admin-dashboard-wrapper .mat-checkbox-inner-container {
+    height: 15px;
+    width: 15px;
+}
+
+.menuicon-popup .mat-checkbox-layout .mat-checkbox-label {
+    color: #3c474b;
+}
+
+.success-input .mat-form-field .mat-form-field-label {
+    color: #1fa564 !important;
+}
+
+.success-input .mat-form-field .mat-form-field-ripple {
+    background-color: #1fa564 !important;
+}
+
+.success-input .mat-form-field .mat-form-field-label,
+{
+    color: #1fa564 !important;
+}
+
+.success-input .mat-form-field-appearance-legacy .mat-form-field-infix {
+    color: #1fa564;
+}
+
+.success-input .mat-select-value-text {
+    color: #1fa564;
+}
+
+.success-input .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #1fa564;
+}
+
+.error-input .mat-form-field .mat-form-field-label {
+    color: #ef2929 !important;
+}
+
+.error-input .mat-form-field .mat-form-field-ripple {
+    background-color: #ef2929 !important;
+}
+
+.error-input .mat-form-field .mat-form-field-label,
+{
+    color: #ef2929 !important;
+}
+
+.error-input .mat-form-field-appearance-legacy .mat-form-field-infix {
+    color: #ef2929;
+}
+
+.error-input .mat-select-value-text {
+    color: #ef2929;
+}
+
+.error-input .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #ef2929;
+}
+
+.userpop-header .select-item .mat-form-field-infix {
+    width: 150px;
+}
+
+.userpop-header .mat-form-field-flex {
+    padding: 0px 10px;
+    background-color: #eceff0;
+}
+
+.userpop-header .mat-form-field-infix {
+    border-top: 3px solid transparent;
+}
+
+.userpop-header .input-form .mat-form-field {
+    width: 65%;
+}
+
+.userpopup_main.success-input .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: unset !important;
+    background-color: #1fa564!important;
+}
+
+.userpopup_main.error-input .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: unset !important;
+    background-color: #ef2929 !important;
+}
+
+.userpop-header .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent !important;
+}
+
+.input-icon-right {
+    margin-bottom: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.input-icon-rightinfo {
+    margin-bottom: 10px;
+    position: absolute;
+    right: 0px;
+    top: 12px;
+}
+
+.userpopup_main .input-form .mat-form-field {
+    width: 95%;
+}
+
+.mat-datepicker-content.mat-accent .mat-calendar-body-selected {
+    background-color: #02b0ed !important;
+}
+
+.mat-datepicker-toggle-active.mat-accent {
+    color: #02b0ed !important;
+}
+
+.mat-calendar-body-selected {
+    background-color: #02b0ed !important;
+}
+
+.mat-datepicker-toggle-active {
+    color: #02b0ed !important;
+}
+
+
+.active{
+    color:#4199de!important;
+    font-size: 18px!important;
+}
+.avtar{
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.avtar img{
+ max-width: 100%;
+ height: 100px;
+ object-fit: cover;
+}
+
+.sub-nav{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding: 15px;
+    background-color: #efefef;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    padding-top: 7px;
+}
+.sub-nav li{
+    display: inline-block;
+}
+.sub-nav li a{
+    padding: 10px;
+    color: #555;
+    text-decoration: none;
+    border-bottom: 3px solid;
+    border-color: transparent;
+    
+}
+.sub-nav li.active a{
+    padding: 5px 0;
+    color: #555;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: normal;
+    font-size: initial;
+    border-color: #007bff;
+}
+.info-table tr td:first-child{
+text-align: right;
+}
+.info-table tr td:last-child{
+    color: #777;
+}
+.info-table tr td{
+    padding: 5px;
+}
+.edit-icon{ 
+    font-size: 20px;
+    color: purple;
+}

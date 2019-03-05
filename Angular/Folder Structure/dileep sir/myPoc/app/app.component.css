@@ -1,0 +1,160 @@
+body {
+    background: #fff;
+}
+
+.no-rec-msg {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #3c474b;
+}
+
+.pad-all-0 {
+    padding: 0px !important;
+}
+
+.mar-t-0 {
+    margin-top: 0px !important;
+}
+
+.on-error {
+    color: #f44336;
+}
+
+ul li:focus {
+    outline: none;
+}
+
+
+/*start: icon css*/
+
+[class^="ico-"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.input-icon {
+    margin-bottom: 10px;
+    position: absolute;
+    left: 0;
+}
+
+.input-icon-rgt {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.ico-cancle,
+.ico-search {
+    fill: #9ea8aa;
+}
+
+.ico-cancle,
+.ico-back,
+.ico-menu,
+.ico-right,
+.ico-cross,
+.ico-info {
+    width: 20px;
+    height: 20px;
+}
+
+.ico-filter {
+    width: 15px;
+    height: 15px;
+}
+
+.ico-cancle svg,
+.ico-back svg,
+.icon-szwrap svg,
+.ico-reject svg,
+.ico-corectIco svg,
+.ico-right svg,
+.ico-info svg,
+.ico-pendingIco svg,
+.ico-cross svg,
+.ico-userbg svg,
+.ico-filter svg,
+.ico-menu svg,
+.ico-search svg,
+.ico-filter svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ico-back {
+    fill: #111;
+}
+
+.ico-info {
+    fill: #3c474b;
+}
+
+.ico-question,
+.ico-right {
+    fill: #02b0ed;
+}
+
+.ico-question,
+.ico-search {
+    width: 25px;
+    height: 25px;
+}
+
+.ico-reject,
+.ico-corectIco,
+.ico-pendingIco {
+    width: 100px;
+    height: 100px;
+}
+
+.ico-reject {
+    fill: #ea4e42;
+}
+
+.ico-corectIco {
+    fill: #33c778;
+}
+
+.ico-pendingIco {
+    fill: #f39502;
+}
+
+.ico-userbg {
+    width: 40px;
+    height: 40px;
+}
+
+.ico-menu {
+    color: #3c474b;
+}
+
+.ico-filter {
+    fill: #fff;
+}
+
+.ico-cross {
+    fill: #ef2929;
+}
+
+
+/*End: icon css*/
+
+
+/*global Grid section */
+
+.grid-action {
+    display: flex;
+}
+
+.grid-action a i {
+    padding: 6px;
+    color: #3c474b;
+}
+
+.grid-action a:hover i {
+    color: #02b0ed;
+}

@@ -1,0 +1,16 @@
+.img-resp{
+    max-width: 100%;
+}
+.inner-div{
+    background: white;
+    width: 85%;
+    padding: 10px;
+    margin-left: 20px;
+}
+.m-content{
+     width:75%;margin:auto;background:skyblue;padding: 10px;
+}
+
+.sub-table tr{
+    line-height: 0.7;
+    }

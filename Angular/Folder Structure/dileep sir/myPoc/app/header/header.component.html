@@ -1,0 +1,71 @@
+<!-- <div class="top-strip">
+  <img class="lms-logo" src="assets/images/lms-logo.png" />
+  
+</div> -->
+<div class="mj-nav">
+  <nav class="navbar navbar-expand-sm navbar-light bg-faded" style="border: 1px solid lightgray;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center">
+        <img class="lms-logo" src="assets/images/logo_ehr.png" />
+    </a>
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end " id="nav-content">
+      <ul class="navbar-nav" *ngIf="!isPatientStorage && !isDoctorStorage && !isLabStorage">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li  class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/patient']">Patient</a>
+        </li>
+        <li  class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/doctor']">Clinician</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/lab']">Laboratory</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/aboutus']">About Us</a>
+          </li>
+      </ul>
+
+      <ul class="navbar-nav" *ngIf="isPatientStorage">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/patient']">Patient</a>
+        </li>   
+        <li class="nav-item">
+            <a  class="nav-link" (click)="logoutUser()">Logout</a>
+        </li>    
+      </ul>
+
+      <ul class="navbar-nav" *ngIf="isDoctorStorage">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/doctor']">Clinician</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="logoutUser()">Logout</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav" *ngIf="isLabStorage">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/lab']">Laboratory</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="logoutUser()">Logout</a>
+        </li>
+      </ul>
+
+    </div>

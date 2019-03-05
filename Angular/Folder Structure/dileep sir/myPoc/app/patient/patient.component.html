@@ -1,0 +1,605 @@
+<ngx-spinner bdColor="rgba(213,207,207,0.8)" size="large" color="#5e7cbb" type="ball-clip-rotate-multiple"></ngx-spinner>
+
+<section *ngIf="isPatient || EditProfileEnabled">
+  <ul class="sub-nav d-flex justify-content-end align-items-center">
+    <!-- <li [ngClass]="{'active': isShowClinicianRecord }">
+      <a (click)="getClinician();IsShowMedicalRecord=false;viewMedicalRecord=false;">
+    My Clinician
+      </a>
+    </li> -->
+    <li [ngClass]="{'active': showPatient || EditProfileEnabled}">
+      <a (click)="getPatientProfile();IsShowMedicalRecord=false;viewMedicalRecord=false;">
+        My Profile
+      </a>
+    </li>
+    <li [ngClass]="{'active': IsShowMedicalRecord || viewMedicalRecord }">
+      <a (click)="getMedicalRecord();showPatient=false;isShowClinicianRecord=false;EditProfileEnabled=false;isPatient=true;">
+        Medical Record
+      </a>
+    </li>
+  </ul>
+
+  <div class="clearfix"></div>
+</section>
+
+<section *ngIf="!isPatient">
+  <div class="d-flex justify-content-center flex-column align-items-center">
+    <div class="patient_form align-items-center justify-content-center d-fle login-box">
+      <form (ngSubmit)="createPatientProfile(EditProfileEnabled)" #patientFrom="ngForm">
+        <div class="logo text-center" style="padding: 15px 0px 13px 0;">
+          <span>
+            <h3 *ngIf="!EditProfileEnabled">Create Profile</h3>
+            <h3 *ngIf="EditProfileEnabled">Update Profile</h3>
+          </span>
+        </div>
+        <div class="entry-group">
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="First Name" type="text" name="FirstName" [(ngModel)]="patientData.firstName"
+                required autocomplete="off" maxlength="70" #fName="ngModel" appNoSpaces>
+              <mat-error *ngIf="fName.hasError('required') || fName.invalid">
+                {{errorMsg.FIRST_NAME_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="Last Name" type="text" name="LastName" [(ngModel)]="patientData.lastName"
+                required autocomplete="off" maxlength="70" #lName="ngModel" appNoSpaces>
+              <mat-error *ngIf="lName.invalid || lName.hasError('required')">
+                {{errorMsg.LAST_NAME_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-6" *ngIf="!EditProfileEnabled">
+              <input matInput name="username" placeholder="Email" type="email" required autocomplete="off" appNoSpaces
+                [(ngModel)]="patientData.patientId" #username="ngModel">
+              <mat-error *ngIf="username.hasError('required') || username.invalid">
+                Email Required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6" *ngIf="EditProfileEnabled">
+              <input matInput name="username" placeholder="Email" type="email" required autocomplete="off" appNoSpaces
+                [(ngModel)]="patientData.patientId" #username="ngModel" disabled>
+              <mat-error *ngIf="username.hasError('required') || username.invalid">
+                Email Required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+              <input type="date" name="dob" placeholder="DOB" matInput [(ngModel)]="patientData.dob" value="patientData.dob" min="2000-01-01" max="2018-09-01" #dob="ngModel" class="unstyled">
+              <!-- <input matInput [matDatepicker]="picker" placeholder="DOB" name="dob" [formControl]="date"
+                [min]="minDate" [max]="maxDate" [value]="patientData.dob" appNoSpaces disabled>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker disabled="false"></mat-datepicker>  -->
+               <mat-error *ngIf="dob.invalid || dob.hasError('required')">
+                {{errorMsg.DOB_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-12">
+              <input matInput placeholder="Address" type="text" name="address" [(ngModel)]="patientData.address"
+                required autocomplete="off" maxlength="70" #address="ngModel" appNoSpaces>
+              <mat-error *ngIf="address.invalid || address.hasError('required')">
+                {{errorMsg.ADDRESS1_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="City" type="text" name="city" [(ngModel)]="patientData.city" required
+                autocomplete="off" maxlength="70" #city="ngModel" appNoSpaces>
+              <mat-error *ngIf="city.invalid || city.hasError('required')">
+                {{errorMsg.CITY_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="State" type="text" name="state" [(ngModel)]="patientData.state" required
+                autocomplete="off" maxlength="70" #state="ngModel" appNoSpaces>
+              <mat-error *ngIf="state.invalid || state.hasError('required')">
+                {{errorMsg.STATE_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="Country" type="text" name="country" [(ngModel)]="patientData.country"
+                required autocomplete="off" maxlength="70" #country="ngModel" appNoSpaces>
+              <mat-error *ngIf="country.invalid || country.hasError('required')">
+                {{errorMsg.COUNTRY_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="Zip code" type="text" name="zipcode" [(ngModel)]="patientData.zip" required
+                autocomplete="off" maxlength="70" #zipcode="ngModel" appNoSpaces>
+              <mat-error *ngIf="zipcode.invalid || zipcode.hasError('required')">
+                {{errorMsg.ZIPCODE_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="loginbutton text-center" *ngIf="!EditProfileEnabled">
+            <button class="btn_primary" mat-button [ngClass]="{'disabled': !patientFrom.form.valid}" type="submit"
+              [disabled]="!patientFrom.form.valid || isLoading ">CREATE</button>
+          </div>
+
+          <div class="loginbutton text-center" *ngIf="EditProfileEnabled">
+            <button class="btn_primary" mat-button [ngClass]="{'disabled': !patientFrom.form.valid}" type="submit"
+              [disabled]="!patientFrom.form.valid || isLoading ">Update</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<section *ngIf="!showPatient && isShowClinicianRecord && !IsShowMedicalRecord">
+  <div class="container">
+    <div style="text-align: center" *ngIf="clinicianRecord ==''">
+      <h4>No Record Found</h4>
+    </div>
+    <div class="search-box w-300" *ngIf="clinicianRecord !=''">
+      <form>
+        <div class="input-group input-group-lg">
+          <input type="text" name="search" class="form-control" [(ngModel)]="searchParam.search" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+          <div class="input-group-prepend">
+            <span (click)="searchDoctor(searchParam)" class="input-group-text " id="inputGroup-sizing-lg"><i class="fa fa-search"></i></span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered" *ngIf="clinicianRecord !=''">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Registration Number</th>
+            <th>Specialisation</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of clinicianRecord">
+            <td>{{data.firstName}}</td>
+            <td>{{data.lastName}}</td>
+            <td>{{data.clinicianId}}</td>
+            <td>{{data.registrationNumber}}</td>
+            <td>{{data.Specialisation}}</td>
+            <td>{{data.address.address}}</td>
+            <td>{{data.address.city}}</td>
+            <td>{{data.address.state}}</td>
+            <td>{{data.address.country}}</td>
+            <td><a mat-button (click)="displayClicianRecord(data)">View Profile</a> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- My Profile -->
+<section *ngIf="showPatient && !isShowClinicianRecord && !IsShowMedicalRecord && !viewMedicalRecord">
+  <div class="d-flex justify-content-center">
+    <div class="patient_form align-items-center justify-content-center d-fle login-box">
+      <form>
+        <div class="logo text-right" style="padding: 0 0px 10px 0;">
+          <span>
+            <!-- <h3>My Profile</h3> -->
+          </span>
+          <span> <a mat-button (click)="getEditProfileData()"> Edit </a></span>
+        </div>
+        <div class="entry-group" *ngFor="let data of patientProfile">
+
+          <div class="input-form d-flex align-items-center">
+            <div class="avtar">
+              <img src="../../assets/images/user.png" alt="">
+            </div>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+             <strong>Name :</strong>  {{data.firstName}} {{data.lastName}}
+            </mat-label>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong> Email Id :</strong> {{data.patientId}}
+            </mat-label>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong>DOB :</strong>  {{data.dob}}
+            </mat-label>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong>Address :</strong>  {{data.address.address}} {{data.address.city}} {{data.address.state}}, {{data.address.country}}
+              {{data.address.zip}}
+            </mat-label>
+          </div>
+          <br />
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<!-- Medical Record -->
+<section *ngIf="IsShowMedicalRecord && !viewMedicalRecord">
+  <div class="d-flex justify-content-center flex-column align-items-center">
+    <div class="patient_form align-items-center justify-content-center d-fle login-box">
+      <form (ngSubmit)="createMedicalRecord(editMedicalRecordEnable)" #medicalRecordFrom="ngForm">
+        <div class="logo text-center" style="padding: 15px 0px 13px 0;">
+          <span>
+            <h4 *ngIf="!editMedicalRecordEnable">Create Medical Record</h4>
+            <h4 *ngIf="editMedicalRecordEnable">Update Medical Record</h4>
+          </span>
+        </div><br />
+        <div class="entry-group">
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="Medical History" type="text" name="medicalHistory" [(ngModel)]="medicalRecord.medicalHistory"
+                required autocomplete="off" maxlength="70" #medicalHistory="ngModel" appNoSpaces>
+              <mat-error *ngIf="medicalHistory.hasError('required') || medicalHistory.invalid">
+                {{errorMsg.MEDICAL_HISTORY_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-6">
+              <input matInput placeholder="Allergies" type="text" name="Allergies" [(ngModel)]="medicalRecord.Allergies"
+                required autocomplete="off" maxlength="70" #Allergies="ngModel" appNoSpaces>
+              <mat-error *ngIf="Allergies.invalid || Allergies.hasError('required')">
+                {{errorMsg.ALLERGIES_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-6">
+              <input matInput name="Current Medication" placeholder="Current Medication" type="text" required
+                autocomplete="off" appNoSpaces [(ngModel)]="medicalRecord.currentMedication" #currentMedication="ngModel">
+              <mat-error *ngIf="currentMedication.hasError('required') || currentMedication.invalid">
+                {{errorMsg.CURRENT_MEDICATION_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+              <!-- <input matInput [matDatepicker]="picker" placeholder="Last Consultation Date" name="lastConsultationDate"
+                [(ngModel)]="medicalRecord.lastConsultationDate" #lastConsultationDate="ngModel" appNoSpaces [min]="minDate"
+                [max]="maxDate" [value]="medicalRecord.lastConsultationDate" disabled> -->
+                <input type="date" name="dob" placeholder="Last Consultation Date" matInput [(ngModel)]="medicalRecord.lastConsultationDate" value="patientData.dob" min="2000-01-01"
+                  max="2018-09-01" #lastConsultationDate="ngModel">
+              <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker disabled="false"></mat-datepicker> -->
+              <mat-error *ngIf="lastConsultationDate.invalid || lastConsultationDate.hasError('required')">
+                {{errorMsg.LAST_CONSULTAION_DATE_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-12">
+              <input matInput placeholder="Last Consultation With" type="text" name="lastConsultationWith" [(ngModel)]="medicalRecord.lastConsultationWith"
+                required autocomplete="off" maxlength="70" #lastConsultationWith="ngModel" appNoSpaces>
+              <mat-error *ngIf="lastConsultationWith.invalid || lastConsultationWith.hasError('required')">
+                {{errorMsg.LAST_CONSULTAION_WITH_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row input-form d-flex align-items-center">
+            <mat-form-field class="col-md-12">
+              <input matInput placeholder="Active Hours In A Week" type="text" name="activeHoursInAWeek" [(ngModel)]="medicalRecord.activeHoursInAWeek"
+                required autocomplete="off" maxlength="70" #activeHoursInAWeek="ngModel" appNoSpaces>
+              <mat-error *ngIf="activeHoursInAWeek.invalid || activeHoursInAWeek.hasError('required')">
+                {{errorMsg.ACTIVE_HOURS_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="loginbutton text-center" *ngIf="!editMedicalRecordEnable">
+            <button class="btn_primary" mat-button [ngClass]="{'disabled': !medicalRecordFrom.form.valid}" type="submit"
+              [disabled]="!medicalRecordFrom.form.valid || isLoading ">CREATE</button>
+          </div>
+
+          <div class="loginbutton text-center" *ngIf="editMedicalRecordEnable">
+            <button class="btn_primary" mat-button [ngClass]="{'disabled': !medicalRecordFrom.form.valid}" type="submit"
+              [disabled]="!medicalRecordFrom.form.valid || isLoading ">Update</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<!-- Show medical record -->
+<section *ngIf="viewMedicalRecord && !IsShowMedicalRecord">
+  <div class="" style="padding:0 20px">
+    <button class="btn" (click)="open(content)" style="margin-right:10px;">
+      Clinicians</button>
+   
+    <button class="btn" (click)="open1(content1)" >
+      My Clinicians</button>
+
+    <button class="btn" (click)="AllLab(content2)" style="margin-right:10px;margin-left:10px;">
+      Laboratory</button>
+
+    <button class="btn" (click)="myLab(content3)">
+       My Laboratory</button>
+
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="patient_form align-items-center justify-content-center d-fle login-box">
+      <form>
+      <div class="text-right">
+          <span style="cursor: pointer;" (click)="editmedicalRecord()">Edit</span>
+      </div>
+        <div class="logo text-center" style="padding: 15px 0px 13px 0;">
+          <span>
+            <h5>My Medical Record</h5>
+          </span>
+        </div>
+        <div class="entry-group" *ngFor="let data of medicalRecordData">
+
+          <div class="input-form d-flex align-items-center">
+            <div class="avtar">
+              <img src="../../assets/images/user.png" alt="">
+            </div>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong>Medical History :</strong>  {{data.medicalHistory}}
+            </mat-label>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong>Allergies :</strong>  {{data.Allergies}}
+            </mat-label>
+          </div>
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong> Active Hours in a week :</strong> {{data.activeHoursInAWeek}}
+            </mat-label>
+          </div>
+          <br />
+
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong> Current Medication :</strong>  {{data.currentMedication}}
+            </mat-label>
+          </div>
+
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong> Last Consultation Date :</strong>  {{data.lastConsultationDate}}
+            </mat-label>
+          </div>
+
+          <br />
+          <div class="input-form d-flex align-items-center">
+            <mat-label>
+              <strong> Last Consultation With :</strong>  {{data.lastConsultationWith}}
+            </mat-label>
+          </div>
+          <br />
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<ng-template #content let-modal class="custom-modal">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">All Clinician</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="clinicianRecord ==''" style="text-align:center;">
+      <h5>No Clinician available.</h5>
+    </div>
+    <div class="search-box w-300" *ngIf="clinicianRecord !=''">
+      <form>
+        <div class="input-group input-group-md">
+          <input type="text" name="search" class="form-control" [(ngModel)]="searchData" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+          <div class="input-group-prepend">
+            <span (click)="searchDoctor(searchParam)" class="input-group-text " id="inputGroup-sizing-lg">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="table-responsive" *ngIf="clinicianRecord !=''">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th class="w-100">Name</th>
+            <th>Email</th>
+            <th>Registration Number</th>
+            <th>Specialisation</th>
+            <th class="w-200">Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of clinicianRecord;let i =index;">
+            <td>{{i+1}}</td>
+            <td>{{data.firstName}} {{data.lastName}}</td>
+            <td>{{data.clinicianId}}</td>
+            <td>{{data.registrationNumber}}</td>
+            <td>{{data.Specialisation}}</td>
+            <td>
+              <span *ngIf="data.address.address != ''">{{data.address.address}} {{data.address.city}}
+                {{data.address.state}}, {{data.address.country}}</span> </td>
+            <td>
+              <button class="btn btn-success" (click)="authorizeClinician(data)">Authorize</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #content1 let-modal class="custom-modal">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">My Clinician</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="myClinicianRecord==''" style="text-align:center;">
+      <h6>No Clinician authorized.</h6>
+    </div>
+    <div class="table-responsive" *ngIf="myClinicianRecord!=''">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th class="w-100">Name</th>
+            <th>Email</th>
+            <th>Registration Number</th>
+            <th>Specialisation</th>
+            <th class="w-200">Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of myClinicianRecord;let i =index;">
+            <td>{{i+1}}</td>
+            <td>{{data.firstName}}&nbsp;{{data.lastName}}</td>
+            <td>{{data.clinicianId}}</td>
+            <td>{{data.registrationNumber}}</td>
+            <td>{{data.Specialisation}}</td>
+            <td><span *ngIf="data.address.address != ''">{{data.address.address}} {{data.address.city}}
+                {{data.address.state}}, {{data.address.country}}</span></td>
+            <td>
+              <button class="btn btn-success" (click)="unAuthorizedClinician(data)">Unauthorize</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #content2 let-modal class="custom-modal">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">All laboratory</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="laboratoryRecord ==''" style="text-align:center;">
+      <h5>No laboratory available.</h5>
+    </div>
+    <div class="search-box w-300" *ngIf="laboratoryRecord !=''">
+      <!-- <form>
+        <div class="input-group input-group-md">
+          <input type="text" name="search" class="form-control" [(ngModel)]="searchData" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+          <div class="input-group-prepend">
+            <span (click)="searchDoctor(searchParam)" class="input-group-text " id="inputGroup-sizing-lg">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+        </div>
+      </form> -->
+    </div>
+    <div class="table-responsive" *ngIf="laboratoryRecord !=''">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th class="w-100">Name</th>
+            <th>Email</th>
+            <th>Address</th>          
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of laboratoryRecord;let i =index;">
+            <td>{{i+1}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.labId}}</td>
+            <td>{{data.address}}</td>   
+            <td>
+              <button class="btn btn-success" (click)="authorizeLaboratory(data)">Authorize</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #content3 let-modal class="custom-modal">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">My Laboratory</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="myLaboratoryRecord==''" style="text-align:center;">
+      <h6>No Laboratory authorized.</h6>
+    </div>
+    <div class="table-responsive" *ngIf="myLaboratoryRecord!=''">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th class="w-100">Name</th>
+            <th>Email</th>      
+            <th class="w-200">Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of myLaboratoryRecord;let i =index;">
+            <td>{{i+1}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.labId}}</td>
+            <td>{{data.address}}</td>    
+            <td>
+              <button class="btn btn-success" (click)="unAuthorizedLaboratory(data)">Unauthorize</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>

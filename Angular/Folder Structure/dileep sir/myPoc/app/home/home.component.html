@@ -1,0 +1,8 @@
+<ngx-spinner bdColor="rgba(213,207,207,0.8)" size="large" color="#5e7cbb" type="ball-clip-rotate-multiple"></ngx-spinner>
+<div class="btn-wrap text-right">
+  <a style="margin-left:10px;" href="http://103.21.53.11.xip.io:3000/auth/google" (click)="showSpinner()">
+    <button class="btn btn-danger" [disabled]="isLoggedIn || (isLoggedInUser && isLoggedInUser!=null)">SignIn With
+      Google</button>
+  </a>
+</div>
+<div class="text-center m-t-50"><img class="home-img" src="assets/images/home-img.png" alt="" /></div>

@@ -1,0 +1,39 @@
+.patient_form {
+    background-color: #fff;
+    margin-top: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 3px 9px 0 rgba(0, 0, 0, 0.10);
+    width: 450px;
+    border-radius: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+     margin-bottom: 30px;
+}
+
+.bottom-text{
+    position: absolute;
+    bottom: 0;
+}
+
+.active{
+    color:#4199de!important;
+    font-size: 18px!important;
+}
+
+
+  .search-box{
+margin: 20px 0;
+  } 
+  .w-300{
+      width: 220px;
+  }
+  input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+   
+    -webkit-appearance: none;
+}
+.w-100{
+    min-width: 100px
+}
+.w-200{
+    min-width: 200px;
+}
